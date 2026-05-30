@@ -450,10 +450,9 @@ with tab5:
 
 with tab6:
 
-   st.header("📄 Project Summary")
+    st.header("📄 Project Summary")
 
-st.subheader("Introduction")
-
+    st.subheader("Introduction")
 st.write("""
 
 This project was developed as part of the **Introduction to Data Science**
