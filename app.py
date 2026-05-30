@@ -56,6 +56,7 @@ def make_options(column_name):
 # Streamlit UI
 st.title("🐕 Dog Breeds Database")
 st.caption(
+    "Project by Olga Khodyreva and Jevgeni Filatov"
     "The dataset comes from Kaggle: "
     "Dog Breeds Dataset by Maryna Shut."
 )
