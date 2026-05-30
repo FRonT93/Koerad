@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+#This UI was made with help of Chat GPT 5.4
 
 # Page settings
 st.set_page_config(
@@ -17,9 +18,7 @@ def range_to_mean(value):
     value = str(value)
     value = value.replace("–", "-")
     value = value.replace("—", "-")
-
     low, high = value.split("-")
-
     return (float(low) + float(high)) / 2
 
 
@@ -40,7 +39,6 @@ df["Longevity (yrs)"] = df["Longevity (yrs)"].apply(range_to_mean)
 
 # Height in centimeters
 df["Height (cm)"] = (df["Height (in)"] * 2.54).round(1)
-
 df = df.drop_duplicates(subset=["Breed"])
 
 
@@ -65,16 +63,16 @@ st.caption(
 breed_list = sorted(df["Breed"].unique())
 
 # Tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs(
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
     [
         "🏠 Overview",
         "🐕 Breed Info",
         "⚖️ Breed Comparison",
         "📊 Analysis",
-        "🔍 Breed Search"
+        "🔍 Breed Search",
+        "📄 Project Summary"
     ]
 )
-
 
 # 1. OVERVIEW
 with tab1:
@@ -448,3 +446,40 @@ with tab5:
         ],
         use_container_width=True
     )
+# 6. PROJECT SUMMARY
+
+with tab6:
+
+   st.header("📄 Project Summary")
+
+st.subheader("Introduction")
+
+st.write("""
+
+This project was developed as part of the **Introduction to Data Science**
+course. The objective was to explore a real-world dataset about dog breeds
+and create an interactive dashboard that allows users to analyze and compare
+different breeds.The dataset was obtained from Kaggle and contains information about dog breed
+characteristics, including country of origin, height, lifespan, fur color,
+eye color, character traits, and common health problems.
+Using Python, Pandas, Plotly, and Streamlit, the data was cleaned,
+transformed, analyzed, and visualized in a user-friendly web application.
+""")
+
+st.subheader("Analysis Description")
+
+st.write("""
+Several data preparation and analysis steps were performed during the project. First, the dataset was cleaned and transformed. Height and lifespan values were originally stored as ranges and were converted into average numerical values. Heights were also converted from inches to centimeters to improve readability and consistency. Duplicate breed records were removed to ensure that each breed appeared only once in the final analysis. The application includes multiple analytical views. Users can explore descriptive statistics, compare two dog breeds, analyze height and lifespan distributions, and investigate the relationship between height and lifespan using scatter plots and correlation analysis. Additional analysis was performed on common health problems. Health issues were separated into individual categories, allowing the calculation of average height and lifespan for breeds associated with specific health conditions. This provided insight into potential patterns within the dataset. Finally, a breed recommendation and filtering system was implemented, allowing users to search for breeds based on characteristics such as fur color, eye color, character traits, height, and lifespan.
+""")
+
+st.subheader("Summary and Reflection")
+
+st.write("""
+The project successfully demonstrated the complete data science workflow,including data collection, cleaning, transformation, analysis, visualization, and presentation. The interactive dashboard makes it easy to explore dog breed information and compare different breeds based on multiple characteristics. The visualizations helped reveal patterns within the dataset and provided a better understanding of the relationships between breed attributes. One limitation of the project is that the dataset contains a relatively small number of breeds and some attributes are stored as text rather than precise numerical measurements. Nevertheless, the dataset was sufficient for demonstrating key data science techniques and building an interactive analytical application. Through this project, valuable experience was gained in data preprocessing, exploratory data analysis, visualization design, and web application development using Streamlit.
+""")
+
+st.subheader("Data Source")
+st.write("""
+Dog Breeds Dataset – Maryna Shut
+Source: https://www.kaggle.com/datasets/maryashut/dog-breeds
+""")
