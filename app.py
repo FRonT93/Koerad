@@ -57,8 +57,6 @@ st.set_page_config(
     page_title="Koeratõugude andmebaas",
     layout="wide"
 )
-
-st.title("🐕 Koeratõugude andmebaas")
 breed_list = sorted(df["Breed"].unique())
 # Vahelehed
 tab1, tab2, tab3, tab4, tab5 = st.tabs(
