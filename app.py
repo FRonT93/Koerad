@@ -455,100 +455,35 @@ with tab6:
     st.subheader("Introduction")
 
     st.write("""
-
-    This project was developed as part of the **Introduction to Data Science**
-
-    course. The objective was to explore a real-world dataset about dog breeds
-
-    and create an interactive dashboard that allows users to analyze and compare
-
-    different breeds.
-
-    The dataset was obtained from Kaggle and contains information about dog breed
-
-    characteristics, including country of origin, height, lifespan, fur color,
-
-    eye color, character traits, and common health problems.
-
-    Using Python, Pandas, Plotly, and Streamlit, the data was cleaned,
-
-    transformed, analyzed, and visualized in a user-friendly web application.
-
+The goal of this project was to create a web application that helps users explore different dog breeds and compare them based on their characteristics. Many people choose a dog because of appearance or popularity, but there are also other important things to consider, such as size, lifespan, temperament, and possible health problems.
+We wanted to make a simple and interactive app where users can search for breeds, compare two breeds, and look at different graphics. The app was made with Streamlit, because it allowed us to build a web application using Python. We also used Pandas for working with the data and Plotly for creating interactive charts.
+This project was not only about making an app, but also about learning how to work with data: how to clean it, prepare it, analyse it, and show it in a way that is understandable for users.
     """)
 
     st.subheader("Analysis Description")
 
     st.write("""
 
-    Several data preparation and analysis steps were performed during the project.
-
-    First, the dataset was cleaned and transformed. Height and lifespan values
-
-    were originally stored as ranges and were converted into average numerical
-
-    values. Heights were also converted from inches to centimeters to improve
-
-    readability and consistency. Duplicate breed records were removed to ensure
-
-    that each breed appeared only once in the final analysis.
-
-    The application includes multiple analytical views. Users can explore
-
-    descriptive statistics, compare two dog breeds, analyze height and lifespan
-
-    distributions, and investigate the relationship between height and lifespan
-
-    using scatter plots and correlation analysis.
-
-    Additional analysis was performed on common health problems. Health issues
-
-    were separated into individual categories, allowing the calculation of
-
-    average height and lifespan for breeds associated with specific health
-
-    conditions.
-
-    Finally, a breed recommendation and filtering system was implemented,
-
-    allowing users to search for breeds based on fur color, eye color,
-
-    character traits, height, and lifespan.
-
+   The project used a dog breed dataset from Kaggle. The dataset was useful for practising data analysis and building the application, but it was also one of the main limitations of the project. Kaggle datasets are not always professionally checked, and this dataset was quite simple. Because of that, we could not treat it as a fully reliable source.
+The dataset included information such as breed name, country of origin, fur color, eye color, height, lifespan, traits, and common health problems. This was enough for an educational project, but not enough for a serious dog recommendation system. Important information such as activity level, grooming needs, training difficulty, living conditions, and behaviour with children was missing.
+Before using the data in the app, we had to clean and prepare it. The data was loaded with Pandas using pd.read_csv(). One cleaning step was removing duplicate breed names, because some breeds appeared more than once. This was done so that each breed would be shown only once in the application.
+Some values also needed to be changed before they could be used in charts. For example, height and lifespan were written as ranges, such as 10-12 years. To make these values usable, we calculated the average of the range. Height was also converted from inches to centimetres, because centimetres are easier for users to understand.
+The app includes several sections. In the overview section, users can see general information about the dataset, such as the number of breeds, average height, and average lifespan. There is also a preview of the data.
+In the breed information section, the user can choose one breed and see more details about it. The comparison section allows users to compare two breeds side by side. This makes the app more practical, because users can quickly see differences in height, lifespan, traits, and health problems.
+We also added different graphics to make the app more visual. The app includes histograms for height and lifespan, a scatter plot showing the relationship between height and lifespan, and bar charts for tallest breeds, longest-living breeds, countries of origin, and health problems. These graphics help users notice patterns more easily than just looking at a table.
+The search and recommendation section works with filters. Users can filter breeds by fur color, eye color, traits, height, and lifespan. This is not a machine-learning recommendation system. It is a simple filter-based recommender. This was a more honest choice because the dataset is not strong or reliable enough for serious automatic recommendations.
     """)
 
     st.subheader("Summary and Reflection")
 
     st.write("""
 
-    The project successfully demonstrated the complete data science workflow:
-
-    data loading, cleaning, transformation, analysis, visualization, and
-
-    presentation.
-
-    The interactive dashboard makes it easy to explore dog breed information and
-
-    compare different breeds based on multiple characteristics. The visualizations
-
-    helped reveal patterns within the dataset and provided a better understanding
-
-    of relationships between breed attributes.
-
-    One limitation of the project is that the dataset contains a relatively small
-
-    number of breeds and some attributes are stored as text rather than precise
-
-    numerical measurements. Nevertheless, the dataset was sufficient for
-
-    demonstrating key data science techniques and building an interactive
-
-    analytical application.
-
-    Through this project, valuable experience was gained in data preprocessing,
-
-    exploratory data analysis, visualization design, and web application
-
-    development using Streamlit.
+    Overall, the project achieved its main goal. We created an interactive Streamlit app where users can explore, compare, and filter dog breeds. The app includes tables, filters, comparison tools, and different visualizations.
+One of the strongest parts of the project is that the app gives users several ways to explore the data. They can look at one breed, compare two breeds, analyse charts, or use filters to find breeds that match their preferences. We wanted the app to be simple and understandable, not only for people who know programming.
+The project also showed us how important data quality is. The Kaggle dataset was easy to use, but it was not fully reliable. It was simple, and some information was too general. Because of this, the app should be seen as an educational and exploratory tool, not as a professional source for choosing a dog.
+From the coding side, we learned how to clean and prepare data, remove duplicates, convert text ranges into numbers, create new columns, use filters, and build visualizations. We also learned how to organise a Streamlit app into clear sections.
+If we continued this project, the first improvement would be finding a better and more trustworthy dataset. A stronger dataset should include more detailed information about dog behaviour, activity needs, grooming, training, health, and living conditions.
+In conclusion, this project helped us practise data cleaning, data analysis, visualization, and web app development. The app is useful for exploring dog breeds, but because the dataset is simple and not fully trustworthy, the results should be understood as exploration, not final advice.
 
     """)
 
@@ -558,6 +493,6 @@ with tab6:
 
     Dog Breeds Dataset – Maryna Shut  
 
-    Source: https://www.kaggle.com/datasets/maryashut/dog-breeds
+    Source: https://www.kaggle.com/datasets/marshuu/dog-breeds
 
     """)
