@@ -276,6 +276,68 @@ with tab4:
     )
 
     st.plotly_chart(fig_country, use_container_width=True)
+    st.subheader("Haiguste seos kõrguse ja elueaga")
+
+# Teeme terviseprobleemid eraldi ridadeks
+health_df = df.copy()
+
+health_df["Common Health Problems"] = health_df["Common Health Problems"].fillna("Unknown")
+
+health_long = health_df.assign(
+    HealthProblem=health_df["Common Health Problems"].str.split(",")
+).explode("HealthProblem")
+
+health_long["HealthProblem"] = health_long["HealthProblem"].str.strip()
+
+# Arvutame iga haiguse kohta keskmise kõrguse ja eluea
+health_summary = (
+    health_long
+    .groupby("HealthProblem")
+    .agg(
+        Count=("Breed", "count"),
+        AverageHeight=("Height (cm)", "mean"),
+        AverageLongevity=("Longevity (yrs)", "mean")
+    )
+    .reset_index()
+)
+
+# Näitame ainult sagedasemaid haigusi
+health_summary = health_summary[health_summary["Count"] >= 2]
+
+st.dataframe(
+    health_summary.sort_values("Count", ascending=False),
+    use_container_width=True
+)
+
+fig_health_life = px.bar(
+    health_summary.sort_values("AverageLongevity"),
+    x="HealthProblem",
+    y="AverageLongevity",
+    color="Count",
+    title="Keskmine eluiga terviseprobleemi järgi",
+    labels={
+        "HealthProblem": "Terviseprobleem",
+        "AverageLongevity": "Keskmine eluiga",
+        "Count": "Esinemiste arv"
+    }
+)
+
+st.plotly_chart(fig_health_life, use_container_width=True)
+
+fig_health_height = px.bar(
+    health_summary.sort_values("AverageHeight", ascending=False),
+    x="HealthProblem",
+    y="AverageHeight",
+    color="Count",
+    title="Keskmine kõrgus terviseprobleemi järgi",
+    labels={
+        "HealthProblem": "Terviseprobleem",
+        "AverageHeight": "Keskmine kõrgus cm",
+        "Count": "Esinemiste arv"
+    }
+)
+
+st.plotly_chart(fig_health_height, use_container_width=True)
 
 
 # 5. TÕU OTSING JA SOOVITAJA
